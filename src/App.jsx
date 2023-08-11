@@ -3,7 +3,7 @@ import CardPage from "./pages/CardPage"
 import "./app.css"
 import { useEffect, useState } from "react"
 function App() {
-  const [number ,setNumber] = useState (localStorage.getItem("number"));
+  const [number ,setNumber] = useState (localStorage.getItem("number") ? localStorage.getItem("number")  : 0 );
 
   useEffect (() => {
     const setLocalNumber = () => {
@@ -13,7 +13,7 @@ function App() {
   } ,[number]);
   return (
     <>
-      <Nav />
+      <Nav number={number}/>
       <CardPage number={number} setNumber={setNumber}/>
     </>
   )

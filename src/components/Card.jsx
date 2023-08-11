@@ -19,8 +19,16 @@ console.log("hello");
           </ul>
         </div>
         <div className='button-wrapper'>
-             <Button name = {"Add to cart"} classname={"cart-btn"} number ={number} setNumber ={setNumber}  onClick= {() => setNumber(() => number ++)}></Button >
-             <Button name = {"View item"} classname={"view-btn"}  ></Button>
+             <Button 
+              name = {"Add to cart"}
+              classname={"cart-btn"} 
+              number ={number} 
+              setNumber ={setNumber}  
+              onClick= {() =>
+              setNumber(() => number ++)}/>
+             <Button
+              name = {"View item"}
+              classname={"view-btn"}  />
         </div>
     </div>
   )

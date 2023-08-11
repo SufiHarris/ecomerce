@@ -2,10 +2,14 @@ import React, { useState } from 'react'
 import "./nav.css"
 import logo from "../../assets/logo.avif"
 import { FaShoppingCart } from 'react-icons/fa';
-const Nav = ({}) => {
-   useState(() => {},[])
-   const number = localStorage.getItem("number");
-   console.log(number)
+const Nav = ({number}) => {
+   const [cart ,setCart ] =useState()
+   useState(() => {
+      const number = localStorage.getItem("number");
+      setCart(number)
+   },[number])
+
+
   return (
      <nav>
         <div className='logo-div'>
