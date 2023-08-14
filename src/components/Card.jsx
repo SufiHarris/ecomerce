@@ -1,12 +1,15 @@
 import React from 'react'
 import ImgPortion from './ImgPortion'
 import Button from './Button'
+import {useNavigate} from 'react-router-dom';
+
 
 const Card = ({data ,id ,number,setNumber}) => {
-  const handleClick = () => {
-console.log("hello");
-  }
+  const navigate = useNavigate();
+  const handleOnClick = () => navigate(`/productpage/${data.id}`);
 
+
+  
   return (
     <div className='card'>
         <ImgPortion src ={data.image}/>
@@ -28,7 +31,10 @@ console.log("hello");
               setNumber(() => number ++)}/>
              <Button
               name = {"View item"}
-              classname={"view-btn"}  />
+              classname={"view-btn"} 
+              onClick={handleOnClick}
+              navigate={navigate} 
+             />
         </div>
     </div>
   )

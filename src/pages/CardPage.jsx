@@ -9,6 +9,7 @@ const CardPage = ({number ,setNumber}) => {
         const getData = async () => {
         const response = await axios.get("https://fakestoreapi.com/products" );
         const data = response.data;
+        console.log(data)
         setData(data);
         }
         getData();
