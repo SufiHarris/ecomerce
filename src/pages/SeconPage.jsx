@@ -1,20 +1,36 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import Button from '../components/Button';
 import axios from 'axios';
+import LoadingSpinner from '../components/Spinner';
 
-const SeconPage = () => {
+import { FaBold } from 'react-icons/fa';
+
+const SeconPage = ({onClick}) => {
 const [data , setData] = useState({})
+const [rating , setRating] = useState({})
+const [isLoading ,setLoading ] = useState(false);
    const {id} =useParams();
-   const getData = async () => {
-    
-     const response = await axios.get(`https://fakestoreapi.com/products/${id}`);
-     setData(response.data)
-   }
-   getData();
+
+   useEffect(() => {
+    const getData = async () => {
+      setLoading(true)
+      const response = await axios.get(`https://fakestoreapi.com/products/${id}`);
+      
+      setData(response.data);
+      setRating(response.data.rating)
+      setLoading(false);
+    }
+    getData();
+   } ,[])
+
+
   return (
     <>
+ 
     <div className='product-container'>
+    {isLoading ?
+         <LoadingSpinner /> : 
       <div className='product-main'>
         <div className='product-image'>
             <img src={data.image} alt="" className='product-img'/>
@@ -28,13 +44,18 @@ const [data , setData] = useState({})
             <p>
               {data.description}
             </p>
+            <h5>
+             Rating :{rating.rate} ({rating.count})
+            </h5>
             <div className='button-wrapper' style={{marginTop:'3rem' , justifyContent: 'start' , paddingLeft : '0'}}>
-             <Button classname='cart-btn m2' name={"Add to cart"} />
+             <Button classname='cart-btn m2' name={"Add to cart"} onClick={onClick}/>
              <Button classname='buy-btn' name={"Buy now"}/>
             </div>
         </div>
         </div>
-    </div>
+        }
+    </div> 
+
     </>
   )
 }

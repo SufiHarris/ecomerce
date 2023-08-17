@@ -1,12 +1,8 @@
 import React from 'react'
-import {useNavigate} from 'react-router-dom';
 const Button = (
   {name ,
    classname ,
    onClick ,
-   number ,
-   setNumber ,
-   navigate ,
    }) => {
   return (
    <>

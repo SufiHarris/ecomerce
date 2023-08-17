@@ -4,10 +4,10 @@ import Button from './Button'
 import {useNavigate} from 'react-router-dom';
 
 
-const Card = ({data ,id ,number,setNumber}) => {
+const Card = ({data ,id ,onClick}) => {
   const navigate = useNavigate();
   const handleOnClick = () => navigate(`/productpage/${data.id}`);
-
+  
 
   
   return (
@@ -18,17 +18,15 @@ const Card = ({data ,id ,number,setNumber}) => {
              <li className='body-li title'>{data.title}</li>
              <li className='body-li price'> $ - {data.price}</li>
              <li className='body-li category'>{data.category}</li>
-             <li className='body-li'>{data.description.slice(0,100)}</li>
+             <li className='body-li'>{data.description.slice(0,50)}</li>
           </ul>
         </div>
+        
         <div className='button-wrapper'>
              <Button 
               name = {"Add to cart"}
               classname={"cart-btn"} 
-              number ={number} 
-              setNumber ={setNumber}  
-              onClick= {() =>
-              setNumber(() => number ++)}/>
+              onClick= {onClick}/>
              <Button
               name = {"View item"}
               classname={"view-btn"} 

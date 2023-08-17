@@ -2,6 +2,7 @@ nav {
     display: flex;
     justify-content: space-evenly;
     background-color: #584b3c;
+    align-items: center;
     position: sticky;
     width: 100%;
 }
@@ -23,12 +24,16 @@ nav {
 .cart-div {
     width: 30%;
 }
+.ul-nav {
+ align-items: center;
+}
 ul{
     display: flex;
     list-style: none;
     justify-content: center;
     padding: 10px;
     color: #fff;
+    font-size: 17px;
 }
 li {
     margin-right: 15px;

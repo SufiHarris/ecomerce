@@ -1,15 +1,10 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import "./nav.css"
 import logo from "../../assets/logo.avif"
 import { FaShoppingCart } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
-const Nav = ({number}) => {
-   const [cart ,setCart ] =useState()
-   useState(() => {
-      const number = localStorage.getItem("number");
-      setCart(number)
-   },[number])
-
+import SearchItem from '../SearchItem';
+const Nav = ({number, search ,setSearch}) => {
 
   return (
      <nav>
@@ -17,10 +12,10 @@ const Nav = ({number}) => {
           <Link to= {'/'}>   <img src={logo} alt=""  className='logo'/></Link> 
         </div>
         <div className='cart-div'>
-                     <input type="text" name="" id="" className='nav-search'  placeholder='Search for item'/>
-         </div> 
+                   <SearchItem search={search} setSearch={setSearch}/>
+        </div> 
         <div className='nav-links'>
-           <ul>
+           <ul className='ul-nav'>
     <li><Link to={'/'}>Home</Link></li>
     <li>Contact</li>
     <li>Products</li>
