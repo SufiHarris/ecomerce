@@ -2,11 +2,49 @@ import React, { useEffect, useState } from 'react'
 import "./nav.css"
 import logo from "../../assets/logo.avif"
 import { FaShoppingCart } from 'react-icons/fa';
-import { Link } from 'react-router-dom';
+import { Link, Outlet } from 'react-router-dom';
 import SearchItem from '../SearchItem';
-const Nav = ({number, search ,setSearch}) => {
+import axios from 'axios';
 
+const Nav = ({}) => {
+   const [data ,setData] = useState([]);
+   const [isLoading ,setLoading ] = useState(false);
+   const [search ,setSearch] = useState("");
+   const [quantity ,setQuantity] = useState(localStorage.getItem("number") ? parseInt(localStorage.getItem("number")) : 0);
+   function onClick () {
+      setQuantity((number) => number+1);
+      console.log(number)
+    }
+    const handleChange = () => {
+      if(search == "") return  getProducts()
+      setData((data) => data.filter((data) => data.title.toLowerCase().includes(search.toLowerCase())))
+    }
+    async function getProducts  () {
+      try{
+            const response = await axios.get("https://fakestoreapi.com/products" );
+            const data = response.data;
+            setData(data);
+            setLoading(false);
+      }catch (err){
+       console.log(err);
+      }
+   }
+   useEffect (() => {
+     const setLocalNumber = () => {
+           localStorage.setItem("number" ,quantity);
+     }
+     setLocalNumber();
+   } ,[quantity]);
+   useEffect(() => {
+      setLoading(true);
+      getProducts();
+ },[]);
+
+ useEffect (() => {
+   handleChange();
+ },[search])
   return (
+   <>
      <nav>
         <div className='logo-div'>
           <Link to= {'/'}>   <img src={logo} alt=""  className='logo'/></Link> 
@@ -23,11 +61,13 @@ const Nav = ({number, search ,setSearch}) => {
     <li>Contact</li>
     
     <li className='cart'><FaShoppingCart /></li>
-    <li className='number' >{number}</li>
+    <li className='number' >{quantity}</li>
          </ul>
         </div>
      
      </nav>
+     <Outlet context={[data , isLoading , onClick]}/>
+     </>
   )
 }
 

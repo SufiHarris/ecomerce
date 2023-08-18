@@ -6,7 +6,7 @@ import LoadingSpinner from '../components/Spinner';
 
 import { FaBold } from 'react-icons/fa';
 
-const SeconPage = ({onClick}) => {
+const Product = ({onClick}) => {
 const [data , setData] = useState({})
 const [rating , setRating] = useState({})
 const [isLoading ,setLoading ] = useState(false);
@@ -60,4 +60,4 @@ const [isLoading ,setLoading ] = useState(false);
   )
 }
 
-export default SeconPage
+export default Product

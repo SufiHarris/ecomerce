@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from 'react'
 import Card from '../components/card'
-
-const CardPage = ({ data , onClick}) => {
-  
+import { useOutletContext } from 'react-router-dom'
+import LoadingSpinner from "../components/Spinner"
+const Home = ({ }) => {
+  const [data , isLoading ,onClick] =useOutletContext();
+  if(isLoading)  return <div className='spinner-container'><LoadingSpinner /></div>
   return (
     <div className='card-container'>
       {data.length <= 0 &&  <h1>No Matching resulst</h1>}
@@ -11,4 +13,4 @@ const CardPage = ({ data , onClick}) => {
   )
 }
 
-export default CardPage
+export default Home
