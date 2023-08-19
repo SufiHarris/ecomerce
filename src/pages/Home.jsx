@@ -4,6 +4,7 @@ import { useOutletContext } from 'react-router-dom'
 import LoadingSpinner from "../components/Spinner"
 const Home = ({ }) => {
   const [data , isLoading ,onClick] =useOutletContext();
+  console.log(useOutletContext())
   if(isLoading)  return <div className='spinner-container'><LoadingSpinner /></div>
   return (
     <div className='card-container'>

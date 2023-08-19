@@ -2,8 +2,8 @@ import React from 'react'
 import ImgPortion from './ImgPortion'
 import Button from './Button'
 import {useNavigate} from 'react-router-dom';
-
-
+import AddCartBtn from "/AddCartBtn"
+ 
 const Card = ({data ,id ,onClick}) => {
   const navigate = useNavigate();
   const handleOnClick = () => navigate(`/productpage/${data.id}`);
@@ -23,10 +23,7 @@ const Card = ({data ,id ,onClick}) => {
         </div>
         
         <div className='button-wrapper'>
-             <Button 
-              name = {"Add to cart"}
-              classname={"cart-btn"} 
-              onClick= {onClick}/>
+           <AddCartBtn />
              <Button
               name = {"View item"}
               classname={"view-btn"} 

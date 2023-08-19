@@ -1,22 +1,23 @@
 import React, { useEffect, useState } from 'react'
-import { useParams } from 'react-router-dom'
+import { useOutletContext, useParams } from 'react-router-dom'
 import Button from '../components/Button';
 import axios from 'axios';
 import LoadingSpinner from '../components/Spinner';
 
 import { FaBold } from 'react-icons/fa';
 
-const Product = ({onClick}) => {
+const Product = ({ }) => {
 const [data , setData] = useState({})
 const [rating , setRating] = useState({})
 const [isLoading ,setLoading ] = useState(false);
-   const {id} =useParams();
+const [onClick ,] = useOutletContext();
+console.log(useOutletContext())
+const {id} =useParams();
 
    useEffect(() => {
     const getData = async () => {
       setLoading(true)
       const response = await axios.get(`https://fakestoreapi.com/products/${id}`);
-      
       setData(response.data);
       setRating(response.data.rating)
       setLoading(false);

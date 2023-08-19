@@ -12,11 +12,15 @@ const Nav = ({}) => {
    const [search ,setSearch] = useState("");
    const [quantity ,setQuantity] = useState(localStorage.getItem("number") ? parseInt(localStorage.getItem("number")) : 0);
    function onClick () {
-      setQuantity((number) => number+1);
-      console.log(number)
+      setQuantity((quantity) => quantity + 1);
     }
     const handleChange = () => {
-      if(search == "") return  getProducts()
+      if(search == "") {
+         return(
+         setLoading(true),
+          getProducts()
+         )
+      }
       setData((data) => data.filter((data) => data.title.toLowerCase().includes(search.toLowerCase())))
     }
     async function getProducts  () {
@@ -54,11 +58,11 @@ const Nav = ({}) => {
         </div> 
         <div className='nav-links'>
            <ul className='ul-nav'>
-    <li><Link to={'/'}>Home</Link></li>
-    <li>Contact</li>
-    <li>Products</li>
-    <li>Shop</li>
-    <li>Contact</li>
+        <li><Link to={'/'}>Home</Link></li>
+        <li>Contact</li>
+        <li>Products</li>
+        <li>Shop</li>
+        <li>Contact</li>
     
     <li className='cart'><FaShoppingCart /></li>
     <li className='number' >{quantity}</li>
