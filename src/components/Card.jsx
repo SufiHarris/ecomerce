@@ -2,7 +2,7 @@ import React from 'react'
 import ImgPortion from './ImgPortion'
 import Button from './Button'
 import {useNavigate} from 'react-router-dom';
-import AddCartBtn from "/AddCartBtn"
+import AddCartBtn from "./AddCartBtn"
  
 const Card = ({data ,id ,onClick}) => {
   const navigate = useNavigate();

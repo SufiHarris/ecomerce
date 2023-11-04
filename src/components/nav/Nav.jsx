@@ -13,6 +13,7 @@ const Nav = ({}) => {
    const [quantity ,setQuantity] = useState(localStorage.getItem("number") ? parseInt(localStorage.getItem("number")) : 0);
    function onClick () {
       setQuantity((quantity) => quantity + 1);
+      console.log('hii');
     }
     const handleChange = () => {
       if(search == "") {

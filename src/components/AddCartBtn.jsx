@@ -1,6 +1,6 @@
 import React from 'react'
 import { useOutletContext } from 'react-router-dom'
-const Button = ({}) => {
+const AddCartBtn = ({}) => {
     const [onClick] = useOutletContext();
   return (
    <>
@@ -14,4 +14,4 @@ const Button = ({}) => {
   )
 }
 
-export default Button
+export default AddCartBtn
